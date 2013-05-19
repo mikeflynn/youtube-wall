@@ -43,7 +43,7 @@ var yt_get_videos = function(id, url, limit) {
     success: function (obj) {
       var videos = [];
       for (var x = 0; x < obj.feed.entry.length; x++) {
-        if(obj.feed.entry[x].content.type == "application/x-shockwave-flash") {
+        if(obj.feed.entry[x].content && obj.feed.entry[x].content.type == "application/x-shockwave-flash") {
           videos.push(obj.feed.entry[x].content.src);
         }
       }
@@ -128,7 +128,8 @@ var fetch_videos = function() {
 
   for (var i = 0; i < channel_length; i++) {
     var feed = false;
-    switch(config_data["channels"][i]) {
+    var channel = config_data["channels"][i].trim();
+    switch(channel) {
       case "trending":
         feed = "standardfeeds/on_the_web";
         break;
@@ -136,10 +137,10 @@ var fetch_videos = function() {
         feed ="standardfeeds/most_popular";
         break;
       default:
-        feed = "users/" + config_data["channels"][i] + "/uploads";
+        feed = "users/" + channel + "/uploads";
     }
 
-    yt_get_videos(config_data["channels"][i], feed, max_results);
+    yt_get_videos(channel, feed, max_results);
   }
 };
 
