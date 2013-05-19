@@ -34,7 +34,7 @@ var yt_get_videos = function(id, url, limit) {
 
   jQuery.ajax({
     url: "http://gdata.youtube.com/feeds/api/" + url,
-    data: {"alt": "json", "fields": "entry(id,title,content)", "max-results": limit},
+    data: {"alt": "json", "fields": "entry(id,title,media:group/media:content)", "max-results": limit},
     dataType: "jsonp",
     error: function () {
       console.log("FAILED request for: " + url);
@@ -43,8 +43,12 @@ var yt_get_videos = function(id, url, limit) {
     success: function (obj) {
       var videos = [];
       for (var x = 0; x < obj.feed.entry.length; x++) {
-        if(obj.feed.entry[x].content && obj.feed.entry[x].content.type == "application/x-shockwave-flash") {
-          videos.push(obj.feed.entry[x].content.src);
+        if(obj.feed.entry[x]["media$group"]["media$content"]) {
+          for(var n in obj.feed.entry[x]["media$group"]["media$content"]) {
+            if (obj.feed.entry[x]["media$group"]["media$content"][n].type == "application/x-shockwave-flash") {
+              videos.push(obj.feed.entry[x]["media$group"]["media$content"][n].url);
+            }
+          }
         }
       }
       channels[id] = videos;
@@ -124,7 +128,7 @@ var fetch_videos = function() {
     return;
   }
 
-  var max_results = 50 / channel_length;
+  var max_results = Math.ceil(100 / channel_length);
 
   for (var i = 0; i < channel_length; i++) {
     var feed = false;
