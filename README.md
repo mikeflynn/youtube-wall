@@ -20,5 +20,5 @@ On a recent trip to the YouTube offices I noticed their cool video wall playing 
 
 ### Usage
 
-  ./bin/start.sh
+  ./bin/start.sh [-h | [comma separated list of channels] [banner message]]
 
