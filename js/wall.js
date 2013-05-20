@@ -130,6 +130,10 @@ var fetch_videos = function() {
 
   var max_results = Math.ceil(100 / channel_length);
 
+  if(max_results > 50) {
+    max_results = 50;
+  }
+
   for (var i = 0; i < channel_length; i++) {
     var feed = false;
     var channel = config_data["channels"][i].trim();
