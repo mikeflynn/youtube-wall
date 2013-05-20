@@ -7,8 +7,6 @@ On a recent trip to the YouTube offices I noticed their cool video wall playing 
 * node.js
 * node-static module
 
-## If you don't already have a running web server...
-
 ### Installation
 
 * Install node.js (http://howtonode.org/how-to-install-nodejs)
@@ -24,6 +22,3 @@ On a recent trip to the YouTube offices I noticed their cool video wall playing 
 
   ./bin/start.sh
 
-## If you already have a running web server...
-
-* Just point a host to ./index.html and load it up!
