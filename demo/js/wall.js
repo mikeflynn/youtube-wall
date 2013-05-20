@@ -178,22 +178,28 @@ var set_grid = function() {
 };
 
 jQuery(document).ready(function(){
-  jQuery.getJSON("/config", {}, function(data) {
-      if(data) {
-        config_data = data;
 
-        if(config_data["message"]) {
-          jQuery("h1").text(config_data["message"]);
-        }
+  var data = {
+    "x": 3,
+    "y": 3,
+    "message": "This is the YouTube Wall.",
+    "channels": ["popular"]
+  };
 
-        var xy = set_grid();
-        config_data["x"] = xy["x"];
-        config_data["y"] = xy["y"];
-        //console.log(data);
+  if(data) {
+    config_data = data;
 
-        fetch_videos();
-      } else {
-        console.log("Couldn't pull config data from server.");
-      }
-  });
+    if(config_data["message"]) {
+      jQuery("h1").text(config_data["message"]);
+    }
+
+    var xy = set_grid();
+    config_data["x"] = xy["x"];
+    config_data["y"] = xy["y"];
+    //console.log(data);
+
+    fetch_videos();
+  } else {
+    console.log("Couldn't pull config data from server.");
+  }
 });
