@@ -1,0 +1,38 @@
+@import url(http://fonts.googleapis.com/css?family=Coda+Caption:800);
+
+* { padding: 0px; margin: 0px; }
+
+body {
+  font-family: "Helvetica";
+  font-size: 12px;
+  background-color: #000;
+  width: 100%;
+}
+
+h1#message {
+  font-size: 55px;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  -webkit-text-stroke: 2px black;
+  position: fixed;
+  top: 40%;
+  width: 100%;
+  z-index: 9999;
+  font-family: 'Coda Caption', sans-serif;
+  line-height: 2em;
+  text-align: center;
+  text-shadow: 3px 3px #333;
+}
+
+div.video {
+  border: 2px solid black;
+  margin: 0px;
+  display: block;
+  padding: 0px;
+}
+
+div.container {
+  overflow: hidden;
+  min-width: 1400px;
+}
