@@ -32,7 +32,7 @@ div.video {
   padding: 0px;
 }
 
-div.container {
-  overflow: hidden;
-  min-width: 1400px;
+div.grid {
+  max-width: 5000px;
+  min-width: 1500px;
 }
